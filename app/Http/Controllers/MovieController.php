@@ -14,6 +14,6 @@ class MovieController extends Controller
             ->groupBy('movies.id')
             ->get();
 
-        dd($movies);
+        return view('movies.index', ['movies' => $movies]);
     }
 }

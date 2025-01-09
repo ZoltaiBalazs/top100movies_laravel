@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import './movie-styles/header.css';
+@import './movie-styles/movie-list.css';
+
+* {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}

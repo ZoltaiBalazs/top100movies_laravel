@@ -1,0 +1,40 @@
+.header-container {
+    text-align: left;
+    padding: 30px 20px;
+    width: 65%;
+    margin: auto;
+  }
+  
+.header-main-title {
+  font-size: 2.4rem;
+  font-weight: 200;
+  margin: 10px 0;
+  color: #333;
+  position: relative;
+  padding-left: 15px;
+}
+
+.header-main-title::before {
+    content: ""; 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    height: 100%;
+    width: 4px; 
+    background-color: #f3ce13; 
+    border-radius: 10px; 
+}
+
+.header-subtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #6d6c6c;
+  margin: 0;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #444;
+  margin: 0;
+}

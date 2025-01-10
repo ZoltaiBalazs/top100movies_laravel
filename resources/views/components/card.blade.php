@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <a href="/movies/{{ $movie->Id }}">
+    <a href="/movies/search?query={{ $movie->Id }}">
       <div class="movie-info-button">
         <div title="See more info about {{ $movie->Title }}">
           <img src="{{ URL::to('/') }}/images/info.png" alt="info-icon" title="See more info about {{ $movie->Title }}">

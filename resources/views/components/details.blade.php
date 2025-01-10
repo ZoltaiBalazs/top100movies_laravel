@@ -17,7 +17,7 @@
           <span class="movie-genre">{{ $movie->Genres }}</span>
           <div class="movie-rating">
             <div>
-              <img src="star.png" alt="star-icon">
+              <img src="{{ URL::to('/') }}/images/star.png" alt="star-icon">
             </div>
             <span class="rating-value">{{ $movie->Imdb_rating }}/10</span>
           </div>

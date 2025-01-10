@@ -9,25 +9,46 @@ class MovieController extends Controller
 {
     public function index() {
         $movies = DB::table('movies')
-            ->leftJoin('movie_genres', 'movies.id', '=', 'movie_genres.movie_id')
-            ->select('movies.*', DB::raw('GROUP_CONCAT(movie_genres.genre) as Genres'))
-            ->groupBy('movies.id')
-            ->get();
+        ->leftJoin('movie_genres', 'movies.id', '=', 'movie_genres.movie_id')
+        ->select('movies.*', DB::raw('GROUP_CONCAT(movie_genres.genre) as Genres'))
+        ->groupBy('movies.id')
+        ->get();
 
         return view('movies.index', [
             'movies' => $movies,
             'isDeatils' => false]);
     }
 
-    public function show($id) {
-        $movies = DB::table('movies')
+    public function show(Request $request)
+    {
+        $query = $request->input('query', '');
+
+        if ((int) $query === 0 && $query !== '0') {
+            if ($query == "") {
+                $this->index();
+            }
+            $movies = DB::table('movies')
             ->leftJoin('movie_genres', 'movies.id', '=', 'movie_genres.movie_id')
+            ->where('Title', 'LIKE', '%' . $query . '%')
             ->select('movies.*', DB::raw('GROUP_CONCAT(movie_genres.genre) as Genres'))
             ->groupBy('movies.id')
             ->get();
+            
+            return view('movies.index', [
+                'movies' => $movies,
+                'isDeatils' => false]);
+        }
 
-        $movieToDisplay = $movies[$id];
+        $movies = DB::table('movies')
+                        ->leftJoin('movie_genres', 'movies.id', '=', 'movie_genres.movie_id')
+                        ->select('movies.*', DB::raw('GROUP_CONCAT(movie_genres.genre) as Genres'))
+                        ->groupBy('movies.id')
+                        ->get();
 
-        return view('movies.index', ['movies' => $movies, 'movie' => $movieToDisplay, 'isDeatils' => true]);
+        $movieToDisplay = $movies[(int) $query-1];
+
+        return view('movies.index', ['movies' => $movies, 'movieToDisplay' => $movieToDisplay, 'isDeatils' => true]);
+    
+    
     }
 }

@@ -3,9 +3,10 @@
         <div class="toolbar">
             <div class="search-bar-container">
                 <input
-                  type="text"
+                  id="search"
+                  type="search"
                   class="search-bar"
-                  placeholder="Search movies..."
+                  placeholder="Search movies..."                  
                 />
             </div>
             <div class="add-btn">
@@ -21,6 +22,22 @@
         </ul>
 
         @if ($isDeatils)
-            <x-details :movie="$movie"></x-details>
+            <x-details :movie="$movieToDisplay"></x-details>
         @endif
+
+    </div>
+    <script>
+        
+        const searchInput = document.getElementById("search");
+
+        searchInput.addEventListener("input", (event) => {
+        const query = event.target.value.trim(); // Get the trimmed value of the input
+
+        if (query.length > 0) {
+            window.location.href = `/movies/search?query=${encodeURIComponent(query)}`;
+        } else {
+            window.location.href = `/movies`;
+        }
+    });
+    </script>
 </x-layout>

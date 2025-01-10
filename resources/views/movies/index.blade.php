@@ -19,9 +19,13 @@
             </a>
         </div>
         <ul class="movie-list">
-          @foreach ($movies as $movie)
-              <x-card :movie="$movie"></x-card>
-          @endforeach
+            @foreach ($movies as $movie)
+            <x-card 
+                :movie="$movie"
+            >
+            </x-card>
+        @endforeach  
+
         </ul>
 
         @if ($isDeatils)
@@ -32,7 +36,8 @@
         @endif
 
         @if ($isCreate)            
-            <x-modal :movie="$movieEmpty" 
+            <x-modal 
+                :movie="$movieEmpty" 
                 :action="$action" 
                 :method="$method"
                 >

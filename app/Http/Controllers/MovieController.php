@@ -124,6 +124,15 @@ class MovieController extends Controller
     }
     
     public function destroy($id) {
-        dd($id);
+        $movies = DB::table('movies')->select('movies.*')->where('id','=',$id)->first();
+        if ($movies) {
+            DB::table('movies')
+                ->join('movie_genres', 'movies.id', '=', 'movie_genres.movie_id')
+                ->where('movies.id', $id)
+                ->delete();            
+            
+            return redirect()->route('movies.index')->with('success','Updating the information of a movie was successfull!');
+        }
+
     }
 }

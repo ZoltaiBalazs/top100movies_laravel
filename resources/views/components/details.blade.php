@@ -1,4 +1,7 @@
 <div class="modal-overlay">
+  <form action="/movies/{{ $movie->Id }}" method="POST">
+    @method('DELETE')
+    @csrf
     <div class="modal">
       <div class="modal-header">
         <a href="/">
@@ -36,11 +39,10 @@
       </div>
       <div class="movie-actions">
         <button class="edit-button">Edit</button>
-        <a href="movies.destroy" @method("DELETE")>
-          <button class="delete-button">Delete</button>
-        </a>
+        <button type="submit" class="delete-button">Delete</button>
       </div>
     </div>
+  </form>
 </div>
   
   {{-- @if (isDeleteConfirmationVisible) {

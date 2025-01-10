@@ -36,7 +36,9 @@
       </div>
       <div class="movie-actions">
         <button class="edit-button">Edit</button>
-        <button class="delete-button">Delete</button>
+        <a href="movies.destroy" @method("DELETE")>
+          <button class="delete-button">Delete</button>
+        </a>
       </div>
     </div>
 </div>

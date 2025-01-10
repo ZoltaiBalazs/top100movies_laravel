@@ -6,6 +6,11 @@ export default defineConfig({
         laravel({
             input: ['resources/js/app.js'],
             refresh: true,
-        }),
+        }),        
     ],
+    server: {
+        watch: {
+            usePolling: true,
+        },
+    },
 });

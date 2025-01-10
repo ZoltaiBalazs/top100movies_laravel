@@ -10,7 +10,7 @@
             </div>
             <div class="add-btn">
                 <div>
-                    <img src="images/add.png" alt="info-icon">
+                    <img src="{{ URL::to('/') }}/images/add.png" alt="info-icon">
                 </div>
             </div>
         </div>
@@ -19,4 +19,8 @@
               <x-card :movie="$movie"></x-card>
           @endforeach
         </ul>
+
+        @if ($isDeatils)
+            <x-details :movie="$movie"></x-details>
+        @endif
 </x-layout>

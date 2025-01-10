@@ -14,15 +14,17 @@
       </div>
       <div class="movie-rating">
         <div>
-          <img src="./images/star.png" alt="star-icon">
+          <img src="{{ URL::to('/') }}/images/star.png" alt="star-icon">
         </div>
         <span class="rating-value">{{ $movie->Imdb_rating }}</span>
       </div>
     </div>
 
-    <div class="movie-info-button">
-      <div title="See more info about {{ $movie->Title }}">
-        <img src="./images/info.png" alt="info-icon" title="See more info about {{ $movie->Title }}">
+    <a href="/movies/{{ $movie->Id }}">
+      <div class="movie-info-button">
+        <div title="See more info about {{ $movie->Title }}">
+          <img src="{{ URL::to('/') }}/images/info.png" alt="info-icon" title="See more info about {{ $movie->Title }}">
+        </div>
       </div>
-    </div>
+    </a>
 </li>
